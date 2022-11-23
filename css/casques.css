@@ -143,7 +143,11 @@
 
 @media screen and (max-width:576px) {
     #casques {
-        display : flex; 
-        flex-wrap : wrap;
+        text-align: center
+    }
+}
+@media screen and (min-width:576px) and (max-width:768px) {
+    #casques {
+        text-align: center;
     }
 }
