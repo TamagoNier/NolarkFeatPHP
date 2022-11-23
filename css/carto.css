@@ -28,3 +28,13 @@
         width: 100%;
     }
 }
+@media screen and (min-width:576px) and (max-width:768px) {
+    #carto h1 {
+        text-align: center;
+    }
+    #carto {
+        justify-content: center; 
+        display : flex; 
+        flex-wrap : wrap; 
+    }
+}
