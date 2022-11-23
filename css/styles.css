@@ -267,7 +267,7 @@ footer a {
 }
 
 
-@media screen and (max-width:576px) {
+@media screen and (max-width:768px) {
     body {
         font-size: large;
 
@@ -359,5 +359,12 @@ footer a {
 
     #principal article {
         margin: 12px;
+    }
+}
+
+@media screen and (min-width:576px) and (max-width:768px) {
+    #thematique {
+        display: flex;
+        flex-direction: row; /* Sur tablette, les casques de l'accueil sont côte à côte */
     }
 }
