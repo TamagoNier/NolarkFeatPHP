@@ -1,0 +1,47 @@
+#video {
+    display: flex;
+}
+
+#video img, #video article p, #video iframe {
+    padding-top: 16px;
+}
+
+#video img {
+    float: left;
+}
+
+#video article {
+    width: 50%;
+    padding-right: 10px;
+}
+
+#video article p span {
+    color: red;
+    font-weight: bold;
+}
+
+#video article p {
+    text-align: justify;
+}
+
+#video article p {
+    padding-right: 10px;
+    text-align: justify;
+}
+
+@media screen and (max-width:576px) {
+    
+    #video {
+        display : flex;
+        flex-wrap: wrap; 
+        margin-top : -15px;
+    }
+    #video article {
+        width : 100%;
+        margin : 12px;
+    }
+    iframe {
+        width: 100%
+    }
+
+}
