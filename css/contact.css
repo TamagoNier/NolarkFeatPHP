@@ -95,7 +95,7 @@ input[type="email"]:valid ~ .input-validation::before {
 }
 
 @media screen and (max-width:576px) {
-    #motif {
-        margin-top: 20px;
+    #contact h1 {
+        text-align: center;
     }
 }
