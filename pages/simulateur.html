@@ -23,14 +23,77 @@
 </head>
 
 <body>
+    <header>
+        <picture>
+            <source media="(max-width:576px)" srcset="../images/banniere_small.png">
+            <source srcset="../images/banniere.png">
+            <img src="../images/banniere.png" alt="Nolark : Protect your minds ! Cette bannière
+                    montre un coucher de soleil avec une femme embrassant un homme réalisant en
+                    stoppie sur sa moto.">
+            <!-- Image basée sur la création originale de ShiftGraphiX sur Pixabay :
+                    https://pixabay.com/fr/couple-stoppie-sportive-vélomoteur-3156613/ -->
+        </picture>
+        <nav>
+            <input type="checkbox" style="width:30px; height: 30px">
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="route.html">Route</a></li>
+                <li><a href="cross.html">Cross</a></li>
+                <li><a href="piste.html">Piste</a></li>
+                <li><a href="enfants.html">Enfants</a></li>
+                <li><a href="nous-contacter.html">Nous contacter</a></li>
+            </ul>
+        </nav>
+    </header>
     
     
-    
-    
-    
-    
-    
-    
+    <!-- Simulateur Debut -->    
+    <section id="simulateur">
+        <form name="form_contact">
+            <fieldset id="coordo">
+                <div><label for="i_nom">Votre nom :</label> <input type="text" name="i_nom" id="i_nom" size="35"
+                        pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\-]+$" required>
+                    <div class="input-validation"></div>
+                </div>
+                <div><label for="i_prenom">Votre prénom :</label> <input type="text" name="i_prenom" id="i_prenom"
+                        size="35" pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\-]+$"
+                        required>
+                    <div class="input-validation"></div>
+                </div>
+                <div>
+                    <label>Années d'ancienneté : </label>
+                   <input type="text" name="num_ancien" id="id_s"
+                        size="35" pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\-]+$"
+                        required>
+                    <div class="input-validation"></div>
+                </div>
+                
+                <div><label for="i_prenom">S20 Vendus :</label> <input type="text" name="i_prenom" id="id_s"
+                        size="35" pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\-]+$"
+                        required>
+                    <div class="input-validation"></div>
+                </div>
+                <div><label for="i_prenom">X-Spirit Vendus :</label> <input type="text" name="i_prenom" id="id_xspirit"
+                        size="35" pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\-]+$"
+                        required>
+                    <div class="input-validation"></div>
+                </div>
+                <div><label for="i_prenom">Multitec vendus :</label> <input type="text" name="i_prenom" id="id_multitec"
+                        size="35" pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\-]+$"
+                        required>
+                    <div class="input-validation"></div>
+                </div>
+            </fieldset>
+  
+            <div id="controles"><input type="button" id="btn_envoyer" name="sub_envoyer"
+                    value="Envoyer"> <input type="reset" name="rst_annuler"
+                    value="Effacer les réponses"></div>
+        </form>
+    </section>
+    <!-- Simulateur FIN --> 
     
     <footer>
         <p>&copy;2022 Nolark - Créé par <a href="mailto: egor_gut@outlook.fr">Egor Gututui</a>
