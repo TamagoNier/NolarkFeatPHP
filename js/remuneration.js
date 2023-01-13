@@ -22,10 +22,16 @@ function primeAncien(salaire, nbAnnees){
 function comXSpirit(qteXSpirit){
     const prixXSpirit = 350;
     const txComXS = 0.06;
-    return ((qteXSpirit-50)*350)*0.02;
+    return ((qteXSpirit-50)*prixXSpirit)*txComXS;
 }
 
 function comS20(qteS20){
+    const prixS20 = 140;
+    const txComS20 = 0.02;
+    return qteS20*prixS20*txComS20;
+}
+
+function comMultitec(qteMulti){
     
 }
 
