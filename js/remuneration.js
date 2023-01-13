@@ -32,6 +32,11 @@ function comS20(qteS20){
 }
 
 function comMultitec(qteMulti){
+    const prixMulti = 180;
+    const txMulti1 = 0.04;
+    const txMulti2 = 0.06;
+    const txMulti3 = 0.1;
+    
     
 }
 
