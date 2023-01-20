@@ -1,63 +1,56 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/javascript.js to edit this template
- */
-
-const fixe = 1100; 
-const nbAncien = parseInt(window.document.querySelector("#num_ancien").value);
-const s20Vendus = parseInt(window.document.querySelector("#id_s").value); 
-const xSpiritVendus = parseInt(window.document.querySelector("#id_xspirit").value); // Int 
-const multitecVendus = parseInt(window.document.querySelector("#id_multitec").value); // Int 
-    
-function primeAncien(salaire, nbAnnees){
-    if (nbAnnees>=5&&nbAnnees<10){
-        return salaire*1.03;
-    }else if(nbAnnees>=10) {
-        return salaire*1.06;
-    }else {
-        return salaire;
-    }
+/**
+* Fonction qui retourne la prime d'ancienneté
+* @param {integer} nb
+* @param {float} fixe
+* @returns {float}
+*/
+function recupPrimeAnciennete(nb, fixe) {
+ const nbAncienMin = 5, txAncienMin = 0.03, nbAncienSup = 10, txAncienSup = 0.06;
+ if (nb >= nbAncienSup) { return (fixe * txAncienSup); }
+ else if (nb >= nbAncienMin) { return (fixe * txAncienMin); }
+ else { return 0.0; }
+} // La position des accolades ci-dessus n'est pas du tout optimale... (mise en page A4)
+/**
+* Fonction qui retourne la commission sur le S20
+* @param {integer} nb
+* @returns {float}
+*/
+function recupComS20(nb) {
+ const prixS20 = 140.0, txComS20 = 0.02;
+ return (nb * prixS20 * txComS20);
 }
-
-function comXSpirit(qteXSpirit){
-    const prixXSpirit = 350;
-    const txComXS = 0.06;
-    return ((qteXSpirit-50)*prixXSpirit)*txComXS;
+/**
+* Fonction qui retourne la commission sur le X-Spirit
+* @@param {integer} nb
+* @returns {float}
+*/
+function recupComXS(nb) {
+ const prixXS = 350.0, nbXSMinCom = 50, txComXS = 0.06;
+ if (nb >= nbXSMinCom) {
+ return ((nb - nbXSMinCom) * prixXS * txComXS);
+ }
+ else {
+ return 0.0;
+ }
 }
-
-function comS20(qteS20){
-    const prixS20 = 140;
-    const txComS20 = 0.02;
-    return qteS20*prixS20*txComS20;
+/**
+* Fonction qui retourne la commission sur le Multitec
+* @param {integer} nb
+* @returns {float}
+*/
+function recupComMulti(nb) {
+ const prixMu = 180.0, nbMultiTranche1 = 20, nbMultiTranche2 = 50;
+ const txMultiTranche1 = 0.04, txMultiTranche2 = 0.06, txMultiTranche3 = 0.1;
+ if (nb <= nbMultiTranche1) {
+ return (nb * prixMu * txMultiTranche1);
+ }
+ else if (nb <= nbMultiTranche2) {
+ return ((nbMultiTranche1 * prixMu * txMultiTranche1)
+ + ((nb - nbMultiTranche1) * prixMu * txMultiTranche2));
+ }
+ else {
+ return ((nbMultiTranche1 * prixMu * txMultiTranche1)
+ + ((nbMultiTranche2 - nbMultiTranche1) * prixMu * txMultiTranche2)
+ + ((nb - nbMultiTranche2) * prixMu * txMultiTranche3));
+ }
 }
-
-function comMultitec(qteMulti){
-    const prixMulti = 180;
-    const txMulti1 = 0.04;
-    const txMulti2 = 0.06;
-    const txMulti3 = 0.1;
-
-    const total = 180 
-    if (qteMulti < 21){
-        total = total*1.04
-    }
-    if (20 < qteMulti && qteMulti < 51){
-        total = total*1.06
-    }
-    if (50 < qteMulti){
-        total = total*1.1
-    }
-    return total
-}
-
-function calcul(m,s,x){
-    const multitec = comMultitec(m);
-    const s20 = comS20(s);
-    const xSpirit = comXSpirit(x);
-
-    alert("Le salaire total est :" + multitec + s20 + xSpirit);
-}
-
-window.addEventListener("load", function () {
-    window.document.querySelector("#btn_envoyer").addEventListener("click", calcul(multitecVendus, xSpiritVendus, s20Vendus));
-});
