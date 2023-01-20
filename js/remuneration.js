@@ -36,14 +36,28 @@ function comMultitec(qteMulti){
     const txMulti1 = 0.04;
     const txMulti2 = 0.06;
     const txMulti3 = 0.1;
-    
-    
+
+    const total = 180 
+    if (qteMulti < 21){
+        total = total*1.04
+    }
+    if (20 < qteMulti && qteMulti < 51){
+        total = total*1.06
+    }
+    if (50 < qteMulti){
+        total = total*1.1
+    }
+    return total
 }
 
+function calcul(m,s,x){
+    const multitec = comMultitec(m);
+    const s20 = comS20(s);
+    const xSpirit = comXSpirit(x);
 
-
-
+    alert("Le salaire total est :" + multitec + s20 + xSpirit);
+}
 
 window.addEventListener("load", function () {
-    window.document.querySelector("#btn_envoyer").addEventListener("click", validEnvoi);
+    window.document.querySelector("#btn_envoyer").addEventListener("click", calcul(multitecVendus, xSpiritVendus, s20Vendus));
 });
