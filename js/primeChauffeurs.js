@@ -4,7 +4,7 @@
  */
 /**
  * Retourne la prime de distance perçue en fonction des kilometres parcourus
- * @param {integer} distKm
+ * @param {Integer} distKm
  * @returns {Number}
  */
 function primeDistance(distKm){
@@ -17,6 +17,11 @@ function primeDistance(distKm){
     }
 }
 
+/**
+ * Retourne la prime d'anciennetée en tenant compte du bonus
+ * @param {Integer} annees
+ * @returns {Number}
+ */
 function primeAncien(annees){
     const prime = 300;
     const pallier = 4;
@@ -27,4 +32,12 @@ function primeAncien(annees){
     }else {
         return prime+bonus*(annees-pallier);
     }
+}
+
+function reduction(primeTotale, nbAccident){
+    const premAcc = 0.5;
+    const deuxAcc = 0.33;
+    const troisAcc = 0.25;
+    const quatAcc = 0.0;
+    
 }
