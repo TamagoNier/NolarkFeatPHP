@@ -76,9 +76,58 @@ window.addEventListener("load", function () {
     });
 });
 
-window.addEventListener("load", function() {
- window.document.querySelector("#num_ancien").addEventListener("keyup", calcRemu);
- window.document.querySelector("#num_s20").addEventListener("keyup", calcRemu);
- window.document.querySelector("#num_xs").addEventListener("keyup", calcRemu);
- window.document.querySelector("#num_multi").addEventListener("keyup", calcRemu);
+window.addEventListener("load", function () {
+    window.document.querySelector("#num_ancien").addEventListener("keyup", calcRemu);
+    window.document.querySelector("#num_s20").addEventListener("keyup", calcRemu);
+    window.document.querySelector("#num_xs").addEventListener("keyup", calcRemu);
+    window.document.querySelector("#num_multi").addEventListener("keyup", calcRemu);
 });
+
+window.addEventListener("load", function () {
+    // Déclaration de l'index de parcours
+    let i;
+    // tabInputs est une collection de <input>
+    let tabInputs = window.document.querySelectorAll("input");
+    // Parcours de tabInputs en s'appuyant sur le nombre de <input>
+    for (i = 0; i < tabInputs.length; i++) {
+        // Ajout d'un Listener sur tous les <input> sur l'évènement onKeyUp
+        tabInputs[i].addEventListener("keyup", calcRemu);
+    }
+});
+
+
+function calcRemu() {
+    // Déclaration des constantes
+    const fixe = 1100.0;
+    // Déclaration et affectation des variables
+    let nbAncien = recupValeur("#num_ancien");
+    let nbS20 = recupValeur("#num_s20");
+    let nbXS = recupValeur("#num_xs");
+    let nbMulti = recupValeur("#num_multi");
+    let remuneration = fixe + recupPrimeAnciennete(nbAncien, fixe) + recupComS20(nbS20)
+            + recupComXS(nbXS) + recupComMulti(nbMulti);
+    // Affichage du résultat
+    window.document.querySelector("#remuneration").innerHTML =
+            "La rémunération sera de : " + remuneration + " €";
+}
+/**
+ * Fonction qui retourne un entier depuis une valeur prise dans le DOM
+ *
+ * @param {String} id
+ * @return {integer}
+ */
+function recupValeur(id) {
+    return parseInt(window.document.querySelector(id).value);
+}
+
+
+/**
+ * Fonction qui affiche la rémunération dans l'élément d'id "remuneration"
+ *
+ * @param {type} nombre
+ * @return {undefined}
+ */
+function afficheRemu(nombre) {
+    window.document.querySelector("#remuneration").innerHTML =
+            "La rémunération sera de : " + nombre + " €";
+}
