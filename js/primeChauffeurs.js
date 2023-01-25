@@ -20,19 +20,18 @@ function primeDistance(distKm){
 /**
  * Retourne la prime d'anciennetée en tenant compte du bonus
  * @param {Integer} annees
- * @param {integer} fixe
  * @returns {Number}
 
  */
-function primeAncien(annees, fixe){
+function primeAncien(annees){
     const prime = 300;
     const pallier = 4;
     const bonus = 30;
     
     if(annees < pallier){
-        return fixe;
+        return 0;
     }else {
-        return fixe + prime+bonus*(annees-pallier);
+        return prime+bonus*(annees-pallier);
     }
 }
 
@@ -69,12 +68,9 @@ window.addEventListener("load", function () {
 
         // Déclaration et affectation des variables
         let nbAncien = parseInt(window.document.querySelector("#num_ancien").value);
-        let nbS20 = parseInt(window.document.querySelector("#num_s20").value);
-        let nbXS = parseInt(window.document.querySelector("#num_xs").value);
-        let nbMulti = parseInt(window.document.querySelector("#num_multi").value);
-        let remuneration = fixe + recupPrimeAnciennete(nbAncien, fixe)
-                + recupComS20(nbS20) + recupComXS(nbXS)
-                + recupComMulti(nbMulti);
+        let parcDist = parseInt(window.document.querySelector("#parcours_km").value);
+        let nbAcc = parseInt(window.document.querySelector("#nb_accidents").value);
+        let remuneration = fixe + reduction(primeAncien(nbAncien) + primeDistance(parcDist), nbAcc);
         // Affichage du résultat
         window.document.querySelector("#remuneration").innerHTML =
                 "La rémunération sera de : " + remuneration + " €";
@@ -87,7 +83,6 @@ window.addEventListener("load", function () {
     window.document.querySelector("#nb_accidents").addEventListener("keyup", calcRemu);
 });
 
-
 window.addEventListener("load", function () {
     // Déclaration de l'index de parcours
     let i;
@@ -99,7 +94,6 @@ window.addEventListener("load", function () {
         tabInputs[i].addEventListener("keyup", calcRemu);
     }
 });
-
 
 function calcRemu() {
     // Déclaration des constantes
