@@ -20,24 +20,42 @@ function primeDistance(distKm){
 /**
  * Retourne la prime d'anciennetée en tenant compte du bonus
  * @param {Integer} annees
+ * @param {integer} fixe
  * @returns {Number}
+
  */
-function primeAncien(annees){
+function primeAncien(annees, fixe){
     const prime = 300;
     const pallier = 4;
     const bonus = 30;
     
     if(annees < pallier){
-        return 0;
+        return fixe;
     }else {
-        return prime+bonus*(annees-pallier);
+        return fixe + prime+bonus*(annees-pallier);
     }
 }
 
+/**
+ * 
+ * @param {type} primeTotale
+ * @param {type} nbAccident
+ * @returns {undefined}
+ */
 function reduction(primeTotale, nbAccident){
     const premAcc = 0.5;
     const deuxAcc = 0.33;
     const troisAcc = 0.25;
     const quatAcc = 0.0;
     
+    if(nbAccident === 1){
+        return primeTotale*premAcc;
+    }else if(nbAccident === 2){
+        return primeTotale*deuxAcc;
+    }else if(nbAccident === 3){
+        return primeTotale*troisAcc;
+    }else {
+        return quatAcc;
+    }    
 }
+
