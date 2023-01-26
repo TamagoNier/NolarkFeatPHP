@@ -7,13 +7,13 @@
  * @param {Integer} distKm
  * @returns {Number}
  */
-function primeDistance(distKm){
+function primeDistance(distKm) {
     const plafond = 900;
     const primeParKm = 0.01;
-    if (primeParKm*distKm >= plafond){
+    if (primeParKm * distKm >= plafond) {
         return plafond;
-    }else {
-        return primeParKm*distKm;
+    } else {
+        return primeParKm * distKm;
     }
 }
 
@@ -21,17 +21,17 @@ function primeDistance(distKm){
  * Retourne la prime d'anciennetée en tenant compte du bonus
  * @param {Integer} annees
  * @returns {Number}
-
+ 
  */
-function primeAncien(annees){
+function primeAncien(annees) {
     const prime = 300;
     const pallier = 4;
     const bonus = 30;
-    
-    if(annees < pallier){
+
+    if (annees < pallier) {
         return 0;
-    }else {
-        return prime+bonus*(annees-pallier);
+    } else {
+        return prime + bonus * (annees - pallier);
     }
 }
 
@@ -41,47 +41,26 @@ function primeAncien(annees){
  * @param {type} nbAccident
  * @returns {undefined}
  */
-function reduction(primeTotale, nbAccident){
+function reduction(primeTotale, nbAccident) {
     const premAcc = 0.5;
     const deuxAcc = 0.33;
     const troisAcc = 0.25;
     const quatAcc = 0.0;
-    
-    if(nbAccident === 0){
+
+    if (nbAccident === 0) {
         return primeTotale;
-    }else if(nbAccident === 1){
-        return primeTotale*premAcc;
-    }else if(nbAccident === 2){
-        return primeTotale*deuxAcc;
-    }else if(nbAccident === 3){
-        return primeTotale*troisAcc;
-    }else {
+    } else if (nbAccident === 1) {
+        return primeTotale * premAcc;
+    } else if (nbAccident === 2) {
+        return primeTotale * deuxAcc;
+    } else if (nbAccident === 3) {
+        return primeTotale * troisAcc;
+    } else {
         return quatAcc;
-    }    
+    }
 }
 
-window.addEventListener("load", function () {
 
-    window.document.querySelector("#btn_calculer").addEventListener("click", function () {
-        // Déclaration des constantes
-        const fixe = 1100.0;
-
-        // Déclaration et affectation des variables
-        let nbAncien = parseInt(window.document.querySelector("#num_ancien").value);
-        let parcDist = parseInt(window.document.querySelector("#parcours_km").value);
-        let nbAcc = parseInt(window.document.querySelector("#nb_accidents").value);
-        let remuneration = fixe + reduction(primeAncien(nbAncien) + primeDistance(parcDist), nbAcc);
-        // Affichage du résultat
-        window.document.querySelector("#remuneration").innerHTML =
-                "La rémunération sera de : " + remuneration + " €";
-    });
-});
-
-window.addEventListener("load", function () {
-    window.document.querySelector("#num_ancien").addEventListener("keyup", calcRemu);
-    window.document.querySelector("#parcours_km").addEventListener("keyup", calcRemu);
-    window.document.querySelector("#nb_accidents").addEventListener("keyup", calcRemu);
-});
 
 window.addEventListener("load", function () {
     // Déclaration de l'index de parcours
@@ -91,9 +70,10 @@ window.addEventListener("load", function () {
     // Parcours de tabInputs en s'appuyant sur le nombre de <input>
     for (i = 0; i < tabInputs.length; i++) {
         // Ajout d'un Listener sur tous les <input> sur l'évènement onKeyUp
-        tabInputs[i].addEventListener("keyup", calcRemu);
+        tabInputs[i].addEventListener("click", calcRemu);
     }
 });
+
 
 function calcRemu() {
     // Déclaration des constantes
@@ -102,10 +82,9 @@ function calcRemu() {
     let nbAncien = recupValeur("#num_ancien");
     let parcoursKm = recupValeur("#parcours_km");
     let nbAcc = recupValeur("#nb_accidents");
-    let remuneration = fixe + reduction(primeAncien(nbAncien, fixe) + primeDistance(parcoursKm),nbAcc);
+    let remuneration = fixe + reduction(primeAncien(nbAncien, fixe) + primeDistance(parcoursKm), nbAcc);
     // Affichage du résultat
-    window.document.querySelector("#remuneration").innerHTML =
-            "La rémunération sera de : " + remuneration + " €";
+    afficheRemu(remuneration);
 }
 
 /**
@@ -129,3 +108,4 @@ function afficheRemu(nombre) {
     window.document.querySelector("#remuneration").innerHTML =
             "La rémunération sera de : " + nombre + " €";
 }
+
