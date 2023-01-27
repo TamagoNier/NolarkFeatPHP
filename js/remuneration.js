@@ -56,32 +56,6 @@ function recupComMulti(nb) {
     }
 }
 
-window.addEventListener("load", function () {
-
-    window.document.querySelector("#btn_calculer").addEventListener("click", function () {
-        // Déclaration des constantes
-        const fixe = 1100.0;
-
-        // Déclaration et affectation des variables
-        let nbAncien = parseInt(window.document.querySelector("#num_ancien").value);
-        let nbS20 = parseInt(window.document.querySelector("#num_s20").value);
-        let nbXS = parseInt(window.document.querySelector("#num_xs").value);
-        let nbMulti = parseInt(window.document.querySelector("#num_multi").value);
-        let remuneration = fixe + recupPrimeAnciennete(nbAncien, fixe)
-                + recupComS20(nbS20) + recupComXS(nbXS)
-                + recupComMulti(nbMulti);
-        // Affichage du résultat
-        window.document.querySelector("#remuneration").innerHTML =
-                "La rémunération sera de : " + remuneration + " €";
-    });
-});
-
-window.addEventListener("load", function () {
-    window.document.querySelector("#num_ancien").addEventListener("keyup", calcRemu);
-    window.document.querySelector("#num_s20").addEventListener("keyup", calcRemu);
-    window.document.querySelector("#num_xs").addEventListener("keyup", calcRemu);
-    window.document.querySelector("#num_multi").addEventListener("keyup", calcRemu);
-});
 
 window.addEventListener("load", function () {
     // Déclaration de l'index de parcours
@@ -91,7 +65,7 @@ window.addEventListener("load", function () {
     // Parcours de tabInputs en s'appuyant sur le nombre de <input>
     for (i = 0; i < tabInputs.length; i++) {
         // Ajout d'un Listener sur tous les <input> sur l'évènement onKeyUp
-        tabInputs[i].addEventListener("keyup", calcRemu);
+        tabInputs[i].addEventListener("click", calcRemu);
     }
 });
 
@@ -107,8 +81,7 @@ function calcRemu() {
     let remuneration = fixe + recupPrimeAnciennete(nbAncien, fixe) + recupComS20(nbS20)
             + recupComXS(nbXS) + recupComMulti(nbMulti);
     // Affichage du résultat
-    window.document.querySelector("#remuneration").innerHTML =
-            "La rémunération sera de : " + remuneration + " €";
+    afficheRemu(Math.Round(remuneration));
 }
 /**
  * Fonction qui retourne un entier depuis une valeur prise dans le DOM
