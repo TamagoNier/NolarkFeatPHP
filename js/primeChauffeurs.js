@@ -47,31 +47,45 @@ function reduction(primeTotale, nbAccident) {
     const troisAcc = 0.25;
     const quatAcc = 0.0;
 
-    if (nbAccident === 0) {
-        return primeTotale;
-    } else if (nbAccident === 1) {
-        return primeTotale * premAcc;
-    } else if (nbAccident === 2) {
-        return primeTotale * deuxAcc;
-    } else if (nbAccident === 3) {
-        return primeTotale * troisAcc;
+    /*if (nbAccident === 0) {
+     return primeTotale;
+     } else if (nbAccident === 1) {
+     return primeTotale * premAcc;
+     } else if (nbAccident === 2) {
+     return primeTotale * deuxAcc;
+     } else if (nbAccident === 3) {
+     return primeTotale * troisAcc;
+     } else {
+     return quatAcc;
+     }*/
+    if (nbAccident > 3) {
+        return 0.0;
     } else {
-        return quatAcc;
+        return primeTotale / (1 + nbAccident);
     }
 }
 
 
 
 window.addEventListener("load", function () {
-    // Déclaration de l'index de parcours
-    let i;
+
+    // tabEvents est une collection d'évenements
+    let tabEvents = ['keyup', 'click'];
     // tabInputs est une collection de <input>
-    let tabInputs = window.document.querySelectorAll("input");
-    // Parcours de tabInputs en s'appuyant sur le nombre de <input>
-    for (i = 0; i < tabInputs.length; i++) {
-        // Ajout d'un Listener sur tous les <input> sur l'évènement onKeyUp
-        tabInputs[i].addEventListener("click", calcRemu);
+    let tabInputs = window.document.querySelectorAll('input[type="number"]');
+    // Parcours de tabInputs en s'appuyant sur le nombre de <input> et sur tabEvents
+    for (let i = 0; i < tabInputs.length; i++) {
+        for (let j = 0; j < tabEvents.length; j++) {
+            // Ajout des listeners sur tous les <input> des events listés dans tabEvents
+            tabInputs[i].addEventListener(tabEvents[j], calcRemu);
+        }
     }
+    // Gestion de l'input de type range (recopie de la valeur dans l'output)
+    window.document.querySelector('#nb_accidents').addEventListener('change', function () {
+        window.document.querySelector('#o_nb_accidents').value =
+                recupValeur('#nb_accidents');
+        calcRemu();
+    });
 });
 
 
@@ -82,10 +96,49 @@ function calcRemu() {
     let nbAncien = recupValeur("#num_ancien");
     let parcoursKm = recupValeur("#parcours_km");
     let nbAcc = recupValeur("#nb_accidents");
-    let remuneration = fixe + reduction(primeAncien(nbAncien, fixe) + primeDistance(parcoursKm), nbAcc);
-    // Affichage du résultat
-    afficheRemu(remuneration);
+    let primeAnnuelleSansAccident = reduction(primeDistance(parcoursKm) +
+            primeAncien(nbAncien), 0);
+    let primeAnnuelle = reduction(primeDistance(parcoursKm)+
+            primeAncien(nbAncien), nbAcc);
+    // Gestion de l'affichage de la prime en fonction du nombre d'accidents
+    gestionNbAccidents(nbAcc, primeAnnuelleSansAccident, primeAnnuelle);
+
 }
+
+
+/**
+ * Procédure qui gère l'affichage en fonction du nombre d'accidents
+ *
+ * @param {integer} nbAccidents
+ * @param {float} primeAnnuelleSansAccident
+ * @param {float} primeAnnuelle
+ * @returns {void}
+ */
+function gestionNbAccidents(nbAccidents, primeAnnuelleSansAccident, primeAnnuelle) {
+    let elH2 = window.document.querySelector('#remuneration');
+    // Si #remuneration (<h2 id='remuneration'></h2>) n'existe pas, on le créé
+    if (!elH2) {
+        elH2 = window.document.createElement('h2');
+        elH2.id = 'remuneration';
+        window.document.querySelector('#recueilinfos').appendChild(elH2);
+    }
+
+    // Gestion de l'affichage avec gestion particulière pour 0 et 1 accident
+    if (nbAccidents === 0) {
+        elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle + ' €';
+    } else if (nbAccidents === 1) {
+        elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle
+                + ' € alors qu\'elle aurait pu être de '
+                + primeAnnuelleSansAccident + ' € sans ' + nbAccidents
+                + ' accident responsable...';
+    } else {
+        elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle
+                + ' € alors qu\'elle aurait pu être de '
+                + primeAnnuelleSansAccident + ' € sans ' + nbAccidents
+                + ' accidents responsables...';
+    }
+}
+
 
 /**
  * Fonction qui retourne un entier depuis une valeur prise dans le DOM
@@ -94,18 +147,12 @@ function calcRemu() {
  * @return {integer}
  */
 function recupValeur(id) {
-    return parseInt(window.document.querySelector(id).value);
-}
-
-
-/**
- * Fonction qui affiche la rémunération dans l'élément d'id "remuneration"
- *
- * @param {type} nombre
- * @return {undefined}
- */
-function afficheRemu(nombre) {
-    window.document.querySelector("#remuneration").innerHTML =
-            "La rémunération sera de : " + nombre + " €";
+    var valeur = parseInt(window.document.querySelector(id).value);
+    if (isNaN(valeur)) {
+        window.document.querySelector(id).value = 0;
+        return 0;
+    } else {
+        return valeur;
+    }
 }
 

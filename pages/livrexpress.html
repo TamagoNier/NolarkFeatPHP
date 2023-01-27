@@ -58,6 +58,11 @@
                 <fieldset id="resultats">
                     <legend>Vos résultats : </legend>
                     <p>
+                        <label for="nb_accidents">Nombre d'accidents :</label>
+                        <input type="range" name="nb_accidents" id="nb_accidents" min="0" max="4" value="0">
+                        <output for="nb_accidents" id="o_nb_accidents">0</output>
+                    </p>
+                    <p>
                         <label for="num_ancien">Nombre d'années d'ancienneté :</label>
                         <input type="number" name="num_ancien" id="num_ancien" min="0" max="50" value="0">
                     </p>
@@ -65,15 +70,9 @@
                         <label for="parcours_km">Kilométres parcourus :</label>
                         <input type="number" name="parcour_km" id="parcours_km" min="0" max="9999" value="1">
                     </p>
-                    <p>
-                        <label for="nb_accidents">Nombre d'accidents :</label>
-                        <input type="number" name="nb_accidents" id="nb_accidents" min="0" max="9999" value="0">
-                    </p>
-                    <h2 id="remuneration"> </h2>
+                    
                 </fieldset>
                 <p id="controles">
-                    <input type="button" name="sub_calculer" id="btn_calculer"
-                           value="Calculer votre rémunération">
                     <input type="reset" name="rst_annuler" id="btn_annuler" value="Effacer les données">
                 </p>
                 
