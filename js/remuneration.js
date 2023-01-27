@@ -81,7 +81,7 @@ function calcRemu() {
     let remuneration = fixe + recupPrimeAnciennete(nbAncien, fixe) + recupComS20(nbS20)
             + recupComXS(nbXS) + recupComMulti(nbMulti);
     // Affichage du résultat
-    afficheRemu(Math.Round(remuneration));
+    afficheRemu(remuneration);
 }
 /**
  * Fonction qui retourne un entier depuis une valeur prise dans le DOM

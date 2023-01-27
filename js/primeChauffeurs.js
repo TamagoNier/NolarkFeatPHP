@@ -84,7 +84,7 @@ function calcRemu() {
     let nbAcc = recupValeur("#nb_accidents");
     let remuneration = fixe + reduction(primeAncien(nbAncien, fixe) + primeDistance(parcoursKm), nbAcc);
     // Affichage du résultat
-    afficheRemu(Math.Round(remuneration));
+    afficheRemu(remuneration);
 }
 
 /**
