@@ -66,39 +66,34 @@ function reduction(primeTotale, nbAccident) {
 }
 
 
-
 window.addEventListener("load", function () {
-
-    // tabEvents est une collection d'évenements
-    let tabEvents = ['keyup', 'click'];
+    // Déclaration de l'index de parcours
+    let i;
     // tabInputs est une collection de <input>
-    let tabInputs = window.document.querySelectorAll('input[type="number"]');
-    // Parcours de tabInputs en s'appuyant sur le nombre de <input> et sur tabEvents
-    for (let i = 0; i < tabInputs.length; i++) {
-        for (let j = 0; j < tabEvents.length; j++) {
-            // Ajout des listeners sur tous les <input> des events listés dans tabEvents
-            tabInputs[i].addEventListener(tabEvents[j], calcRemu);
-        }
+    let tabInputs = window.document.querySelectorAll("input");
+    // Parcours de tabInputs en s'appuyant sur le nombre de <input>
+    for (i = 0; i < tabInputs.length; i++) {
+        // Ajout d'un Listener sur tous les <input> sur l'évènement onKeyUp
+        tabInputs[i].addEventListener("click", calculerPrime);
     }
     // Gestion de l'input de type range (recopie de la valeur dans l'output)
     window.document.querySelector('#nb_accidents').addEventListener('change', function () {
         window.document.querySelector('#o_nb_accidents').value =
                 recupValeur('#nb_accidents');
-        calcRemu();
+        calculerPrime();
     });
 });
 
-
-function calcRemu() {
+function calculerPrime() {
     // Déclaration des constantes
     const fixe = 1100.0;
     // Déclaration et affectation des variables
-    let nbAncien = recupValeur("#num_ancien");
-    let parcoursKm = recupValeur("#parcours_km");
     let nbAcc = recupValeur("#nb_accidents");
+    let nbAncien = recupValeur("#nb_ancien");
+    let parcoursKm = recupValeur("#nb_km");
     let primeAnnuelleSansAccident = reduction(primeDistance(parcoursKm) +
             primeAncien(nbAncien), 0);
-    let primeAnnuelle = reduction(primeDistance(parcoursKm)+
+    let primeAnnuelle = reduction(primeDistance(parcoursKm) +
             primeAncien(nbAncien), nbAcc);
     // Gestion de l'affichage de la prime en fonction du nombre d'accidents
     gestionNbAccidents(nbAcc, primeAnnuelleSansAccident, primeAnnuelle);
