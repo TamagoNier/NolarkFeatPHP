@@ -65,16 +65,18 @@ function reduction(primeTotale, nbAccident) {
     }
 }
 
-
-window.addEventListener("load", function () {
-    // Déclaration de l'index de parcours
-    let i;
+window.addEventListener('load', function () {
+    // tabEvents est une collection d'évenements
+    let tabEvents = ['keyup', 'click'];
     // tabInputs est une collection de <input>
-    let tabInputs = window.document.querySelectorAll("input");
-    // Parcours de tabInputs en s'appuyant sur le nombre de <input>
-    for (i = 0; i < tabInputs.length; i++) {
-        // Ajout d'un Listener sur tous les <input> sur l'évènement onKeyUp
-        tabInputs[i].addEventListener("click", calculerPrime);
+    let tabInputs = window.document.querySelectorAll('input[type="number"]');
+    // Parcours de tabInputs en s'appuyant sur le nombre de <input> et sur tabEvents
+    for (let i = 0; i < tabInputs.length; i++) {
+        for (let j = 0; j < tabEvents.length; j++) {
+            // Ajout des listeners sur tous les <input> des events listés dans tabEvents
+            tabInputs[i].addEventListener(tabEvents[j], calculerPrime);
+            
+        }
     }
     // Gestion de l'input de type range (recopie de la valeur dans l'output)
     window.document.querySelector('#nb_accidents').addEventListener('change', function () {
@@ -83,6 +85,12 @@ window.addEventListener("load", function () {
         calculerPrime();
     });
 });
+
+window.addEventListener('reset', function(){
+    videTab();
+});
+
+
 
 function calculerPrime() {
     // Déclaration des constantes
@@ -122,7 +130,7 @@ function gestionNbAccidents(nbAccidents, primeAnnuelleSansAccident, primeAnnuell
     if (nbAccidents === 0) {
         elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle + ' €';
     } else if (nbAccidents === 4) {
-         document.getElementById("remuneration").innerHTML = '<h2>Nous vous conseillions de repasser votre permis.</h2>\n\
+        document.getElementById("remuneration").innerHTML = '<h2>Nous vous conseillions de repasser votre permis.</h2>\n\
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bNnakGu01eo" title="YouTube video player" frameborder="0" \n\
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> ';
     } else {
@@ -131,7 +139,8 @@ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; pic
                 + primeAnnuelleSansAccident + ' € sans ' + nbAccidents
                 + ' accidents responsables...';
     }
-}
+};
+
 
 
 /**
@@ -150,5 +159,6 @@ function recupValeur(id) {
     }
 }
 
-
-
+function videTab(){
+    window.document.querySelector('#recueilinfos').removeChild("#remuneration");
+}
