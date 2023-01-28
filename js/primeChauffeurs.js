@@ -121,11 +121,10 @@ function gestionNbAccidents(nbAccidents, primeAnnuelleSansAccident, primeAnnuell
     // Gestion de l'affichage avec gestion particulière pour 0 et 1 accident
     if (nbAccidents === 0) {
         elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle + ' €';
-    } else if (nbAccidents === 1) {
-        elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle
-                + ' € alors qu\'elle aurait pu être de '
-                + primeAnnuelleSansAccident + ' € sans ' + nbAccidents
-                + ' accident responsable...';
+    } else if (nbAccidents === 4) {
+         document.getElementById("remuneration").innerHTML = '<h2>Nous vous conseillions de repasser votre permis.</h2>\n\
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bNnakGu01eo" title="YouTube video player" frameborder="0" \n\
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> ';
     } else {
         elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle
                 + ' € alors qu\'elle aurait pu être de '
@@ -150,4 +149,6 @@ function recupValeur(id) {
         return valeur;
     }
 }
+
+
 
