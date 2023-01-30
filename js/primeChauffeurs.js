@@ -66,6 +66,13 @@ function reduction(primeTotale, nbAccident) {
 }
 
 window.addEventListener('load', function () {
+
+    window.addEventListener('change', function () {
+        if (recupValeur('#o_nb_accidents') === 0 && recupValeur('#nb_ancien') === 0 && recupValeur('#nb_km') === 0) {
+            window.document.querySelector('#remuneration').remove();
+        }
+    });
+
     // tabEvents est une collection d'évenements
     let tabEvents = ['keyup', 'click'];
     // tabInputs est une collection de <input>
@@ -75,7 +82,7 @@ window.addEventListener('load', function () {
         for (let j = 0; j < tabEvents.length; j++) {
             // Ajout des listeners sur tous les <input> des events listés dans tabEvents
             tabInputs[i].addEventListener(tabEvents[j], calculerPrime);
-            
+
         }
     }
     // Gestion de l'input de type range (recopie de la valeur dans l'output)
@@ -83,12 +90,16 @@ window.addEventListener('load', function () {
         window.document.querySelector('#o_nb_accidents').value =
                 recupValeur('#nb_accidents');
         calculerPrime();
+
+        window.addEventListener('reset', function () {
+            if (recupValeur('#nb_accidents') === 0 && recupValeur('#nb_ancien') === 0 && recupValeur('#nb_km') === 0) {
+                window.document.querySelector('#remuneration').remove();
+            }
+
+        });
     });
 });
 
-window.addEventListener('reset', function(){
-    videTab();
-});
 
 
 
@@ -139,7 +150,8 @@ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; pic
                 + primeAnnuelleSansAccident + ' € sans ' + nbAccidents
                 + ' accidents responsables...';
     }
-};
+}
+;
 
 
 
@@ -159,6 +171,3 @@ function recupValeur(id) {
     }
 }
 
-function videTab(){
-    window.document.querySelector('#recueilinfos').removeChild("#remuneration");
-}
