@@ -155,7 +155,7 @@ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; pic
         if (!elNouv) {
             elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle
                     + ' € alors qu\'elle aurait pu être de '
-                    + primeAnnuelleSansAccident + ' € sans ' + nbAccidents
+                    + Math.round(primeAnnuelleSansAccident) + ' € sans ' + Math.round(nbAccidents)
                     + ' accidents responsables...';
         } else {
             window.document.querySelector('#sensibilisation').remove(); //supprime la video si le nombre d'accidents change
