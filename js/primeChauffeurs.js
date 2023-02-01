@@ -67,10 +67,10 @@ function reduction(primeTotale, nbAccident) {
 
 window.addEventListener('load', function () {
 
-    window.addEventListener('change', function () {
-        if (recupValeur('#o_nb_accidents') === 0 && recupValeur('#nb_ancien') === 0 && recupValeur('#nb_km') === 0) {
-            window.document.querySelector('#remuneration').remove();
-        }
+    window.addEventListener('reset', function () { //"Ecoute" le site afin de détécter si le form à été reinitialisé
+        window.document.querySelector('#remuneration').remove();
+        window.document.querySelector('#sensibilisation').remove();
+
     });
 
     // tabEvents est une collection d'évenements
@@ -91,14 +91,9 @@ window.addEventListener('load', function () {
                 recupValeur('#nb_accidents');
         calculerPrime();
 
-        window.addEventListener('reset', function () {
-            if (recupValeur('#nb_accidents') === 0 && recupValeur('#nb_ancien') === 0 && recupValeur('#nb_km') === 0) {
-                window.document.querySelector('#remuneration').remove();
-            }
-
-        });
     });
 });
+
 
 
 
@@ -131,6 +126,9 @@ function calculerPrime() {
 function gestionNbAccidents(nbAccidents, primeAnnuelleSansAccident, primeAnnuelle) {
     let elH2 = window.document.querySelector('#remuneration');
     // Si #remuneration (<h2 id='remuneration'></h2>) n'existe pas, on le créé
+    
+    let elNouv = window.document.querySelector('#sensibilisation');//permet de créer l'espace necesssaire à la video
+
     if (!elH2) {
         elH2 = window.document.createElement('h2');
         elH2.id = 'remuneration';
@@ -141,18 +139,34 @@ function gestionNbAccidents(nbAccidents, primeAnnuelleSansAccident, primeAnnuell
     if (nbAccidents === 0) {
         elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle + ' €';
     } else if (nbAccidents === 4) {
-        document.getElementById("remuneration").innerHTML = '<h2>En 2021, 3 219 personnes sont mortes sur les routes de France Metropolitaine.\n\
-Ne soyez pas la cause.</h2>\n\
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gpNMrcgiAdw" title="YouTube video player" frameborder="0" \n\
+        elH2.innerHTML = 'En 2021, 3 219 personnes sont mortes sur les routes de France Metropolitaine.\n\
+        Ne soyez pas la cause.';
+
+        if (!elNouv) { //si l'espace de video n'exite pas il est crée
+            elNouv = window.document.createElement('h3');
+            elNouv.id = 'sensibilisation';
+            window.document.querySelector('#recueilinfos').appendChild(elNouv);
+        }
+
+        document.getElementById("sensibilisation").innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/gpNMrcgiAdw" title="YouTube video player" frameborder="0" \n\
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+
     } else {
-        elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle
-                + ' € alors qu\'elle aurait pu être de '
-                + primeAnnuelleSansAccident + ' € sans ' + nbAccidents
-                + ' accidents responsables...';
+        if (!elNouv) {
+            elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle
+                    + ' € alors qu\'elle aurait pu être de '
+                    + primeAnnuelleSansAccident + ' € sans ' + nbAccidents
+                    + ' accidents responsables...';
+        } else {
+            window.document.querySelector('#sensibilisation').remove(); //supprime la video si le nombre d'accidents change
+
+            elH2.innerHTML = 'Votre prime sera de ' + primeAnnuelle
+                    + ' € alors qu\'elle aurait pu être de '
+                    + primeAnnuelleSansAccident + ' € sans ' + nbAccidents
+                    + ' accidents responsables...';
+        }
     }
 }
-;
 
 
 
