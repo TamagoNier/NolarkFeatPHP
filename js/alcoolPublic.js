@@ -1,13 +1,22 @@
-//0 verres 
-if(0 === getAlcoolPur(0)){
-    console.log('0 verres : ok');
-}else {
-    console.log('0 verres: erreur');
+/**
+ * Function qui retourne l'alcool pur ingéré en function du
+ * nombre de verres
+ * 
+ * @param {int} nbVerres
+ * @returns {int}
+ */
+function getAlcoolPur(nbVerres){
+    return nbVerres*10;
 }
 
-//1 verre 
-if(10 === getAlcoolPur(1)){
-    console.log('1 verre : ok');
-} else {
-    console.log('1 verre : erreur');
+function getCoefDiffusion(sexe) {
+    if(sexe === 'homme') {
+        return 0.7;
+    }else {
+        return 0.6;
+    }
+}
+
+function getAlcoolemie(sexe, poids, nbVerres){
+    return getAlcoolPur(nbVerres) / poids * getCoefDiffusion(sexe);
 }
