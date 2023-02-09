@@ -1,3 +1,6 @@
+export {recupValeur};
+
+
 /**
  * Fonction qui retourne la prime d'ancienneté
  * @param {integer} nb
@@ -83,6 +86,7 @@ function calcRemu() {
     // Affichage du résultat
     afficheRemu(remuneration);
 }
+
 /**
  * Fonction qui retourne un entier depuis une valeur prise dans le DOM
  *
@@ -90,7 +94,13 @@ function calcRemu() {
  * @return {integer}
  */
 function recupValeur(id) {
-    return parseInt(window.document.querySelector(id).value);
+    var valeur = parseInt(window.document.querySelector(id).value);
+    if (isNaN(valeur)) {
+        window.document.querySelector(id).value = 0;
+        return 0;
+    } else {
+        return valeur;
+    }
 }
 
 
