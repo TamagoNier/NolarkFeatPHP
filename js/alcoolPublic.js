@@ -40,3 +40,17 @@ function getAlcoolemie(sexe, poids, nbVerres) {
         return 0; //A changer peut-etre 
     }
 }
+
+/**
+ * Fonction qui retourne l'amende encourue en fonction de l'alcoolémie
+ * 
+ * @param {float} alcoolemie
+ * @returns {String}
+ */
+function getAmende(alcoolemie) {
+    if(alcoolemie < 0.8) {
+        return 'Minorée : 90€ / Forfaitaire : 135€ / Majorée : 375€';
+    }else {
+        return '4500€';
+    }
+}
