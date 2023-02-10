@@ -36,7 +36,7 @@ function getAlcoolemie(sexe, poids, nbVerres) {
     // /!\ division par 0 ! on ne veut pas casser la matrice 
     if (poids > 0) {
         return (getAlcoolPur(nbVerres) / (poids * getCoefDiffusion(sexe))).toFixed(2);
-    }else {
+    } else {
         return 0; //A changer peut-etre 
     }
 }
@@ -49,9 +49,9 @@ function getAlcoolemie(sexe, poids, nbVerres) {
  */
 function getAmende(alcoolemie) {
     const seuil = 0.8;
-    if(alcoolemie < seuil) {
+    if (alcoolemie < seuil) {
         return 'Minorée : 90€ / Forfaitaire : 135€ / Majorée : 375€';
-    }else {
+    } else {
         return '4500€';
     }
 }
@@ -62,11 +62,21 @@ function getAmende(alcoolemie) {
  * @param {float} alcoolemie
  * @returns {String}
  */
-function getSanction(alcoolemie){
+function getSanction(alcoolemie) {
     const seuil = 0.8;
     if (alcoolemie < seuil) {
         return '6 points + suspension 3 ans';
-    }else {
+    } else {
         return '6 points + 2 ans de prison + suspension 3 ans + stage de sensibilisation';
+    }
+}
+
+function getInt(id) {
+    let valeur = parseInt(window.document.querySelector(id).value);
+    if (isNaN(valeur)) {
+        window.document.querySelector(id).value = 0; 
+        return 0;
+    }else {
+        return valeur;
     }
 }
