@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<!-- 
+     Page web créé dans le cadre du cours de web Dev
+     Auteur : Egor Gututui
+     Email : egor_gut@outlook.fr
+-->
+
+<html lang="fr-FR">
+    <!-- Simulateur Debut -->    
+    <section id="formulaire">
+        <h1>Simulateur de sanctions en fonction du niveau d'alcoolemie</h1>
+        <form id="form_simulateur" name="form_simulateur">
+            <p>
+                <label for="num_poids"></label>
+                <input type="number" id="num_poids" min="1" max="800" value="1">
+            </p>
+
+            <fieldset id="sexe">  
+                <legend>Sexe : </legend>
+                <p>
+                    <label for="rd_sexehomme">Homme</label>
+                    <input type="radio" name="rd_sexe" id="rd_sexehomme" value="homme" checked="checked">
+                </p>
+                <p>
+                    <label for="rd_sexefemme">Femme</label>
+                    <input type="radio" name="rd_sexe" id="rd_sexefemme" value="femme">
+                </p>
+            </fieldset>
+
+            <p>
+                <label for="num_poids"></label>
+                <input type="number" id="num_poids" min="1" max="800" value="1">
+            <p>
+
+            <p id="controles">
+                <input type="reset" id="btn_annuler" value="Effacer les données">
+            </p>
+        </form>
+    </section>
+    <!-- Simulateur FIN --> 
+
+</html>
 
