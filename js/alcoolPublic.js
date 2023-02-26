@@ -72,7 +72,7 @@ function getSanction(alcoolemie) {
         return 'Pas de sanction, bravo !'
     } else if (alcoolemie < seuilDelit) {
         return '6 points + suspension 3 ans';
-    } else if (alcoolemie > seuilDelit){
+    } else if (alcoolemie > seuilDelit) {
         return '6 points + 2 ans de prison + suspension 3 ans + stage de sensibilisation';
     }
 }
@@ -157,5 +157,9 @@ function gestionAffichageConsequances(amande, sanction) {
         window.document.querySelector('#formulaire').appendChild(deuxElH2);
     }
 
-    premElH2.innerHTML = sanction + "\n" + amande;
+    premElH2.innerHTML = sanction + "\n" + amande + "\nCependant l'alcool au volant nous affecte tous";
+    deuxElH2.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/5ZO5Hv47UJc" \n\
+title="YouTube video player" \n\
+frameborder="0" allow="accelerometer; \n\
+autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
 }
