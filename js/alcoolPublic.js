@@ -51,11 +51,11 @@ function getAmende(alcoolemie) {
     const seuilDelit = 0.8;
     const seuilContra = 0.5;
     if (alcoolemie < seuilContra) {
-        return "Pas d'amande";
+        return "Pas d'amande.";
     } else if (alcoolemie < seuilDelit) {
-        return 'Minorée : 90€ / Forfaitaire : 135€ / Majorée : 375€';
+        return 'Minorée : 90€ / Forfaitaire : 135€ / Majorée : 375€.';
     } else {
-        return '4500€';
+        return '4500€.';
     }
 }
 
@@ -69,7 +69,7 @@ function getSanction(alcoolemie) {
     const seuilDelit = 0.8;
     const seuilContra = 0.5;
     if (alcoolemie < seuilContra) {
-        return 'Pas de sanction, bravo !'
+        return 'Pas de sanction, bravo !';
     } else if (alcoolemie < seuilDelit) {
         return '6 points + suspension 3 ans';
     } else if (alcoolemie > seuilDelit) {
