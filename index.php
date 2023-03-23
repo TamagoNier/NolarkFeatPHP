@@ -35,16 +35,10 @@
                 <span></span>
                 <span></span>
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.php">Accueil</a></li>
                     <?php
-                    $pages = array("route.html", "cross.html", "piste.html", "enfants.html",
-                        "nous-contacter.html");
-                    $noms = array("Route", "Cross", "Piste", "Enfants", "Nous contacter");
-                    $nbLiens = count($pages);
-                    for ($i = 0; $i < $nbLiens; $i++) {
-                        ?>
-                        <li><a href="pages/<?php echo $pages[$i]; ?>"><?php echo $noms[$i]; ?></a></li>
-                    <?php } ?>
+                    include('includes/lienspages.inc.php');
+                    ?>
                 </ul>
             </nav>
         </header>
