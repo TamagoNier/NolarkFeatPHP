@@ -6,4 +6,3 @@ $nbLiens = count($pages);
 for ($i = 0; $i < $nbLiens; $i++) {
     echo '<li><a href="pages/', $pages[$i], '">', $noms[$i], '</a></li>';
 }
-

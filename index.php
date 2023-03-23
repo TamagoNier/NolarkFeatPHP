@@ -37,7 +37,7 @@
                 <ul>
                     <li><a href="index.php">Accueil</a></li>
                     <?php
-                    include('includes/lienspages.inc.php');
+                        include(".\includes\lienspages.inc");
                     ?>
                 </ul>
             </nav>
