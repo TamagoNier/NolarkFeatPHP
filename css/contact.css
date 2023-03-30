@@ -89,13 +89,34 @@ input:invalid {
 
 input[type="text"]:valid ~ .input-validation::before,
 input[type="email"]:valid ~ .input-validation::before {
-    content: "âœ”";
+    content: "✔";
     margin-left: 5px;
     color: green;
 }
 
 @media screen and (max-width:576px) {
+    #motif {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width:576px) and (max-width:768px) {
+    #contact {
+        display: flex;
+        flex-direction: column;
+    }
     #contact h1 {
-        text-align: center;
+        width: 100%;
+    }
+    #coordo {
+        width: 100%;
+    }
+    #motif {
+        width: fit-content;
+    }
+    #controles {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }

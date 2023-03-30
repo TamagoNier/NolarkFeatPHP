@@ -29,34 +29,18 @@
     text-align: justify;
 }
 
-@media screen and (max-width:576px) {
-    
+/* Smartphone */
+@media screen and (max-width:768px) {
     #video {
-        display : flex;
-        flex-wrap: wrap; 
-        margin-top : -15px;
+        flex-direction: column;
     }
     #video article {
-        width : 100%;
-        margin : 12px;
+        width: auto;
     }
-    iframe {
-        width: 100%
+    #video article p {
+        padding-left: 10px;
     }
-
-}
-@media screen and (min-width:576px) and (max-width:768px) {
-    #video {
-        display : flex;
-        flex-wrap: wrap; 
-        margin-top : -15px;
-    }
-    #video article {
-        width : 100%;
-        margin : 12px;
-    }
-    iframe {
-        width: 100%;
-        margin: 0px 125px;
+    #video iframe {
+        align-self: center;
     }
 }
