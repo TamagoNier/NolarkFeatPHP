@@ -13,6 +13,12 @@ while ($ligne = $res->fetch(PDO::FETCH_OBJ)) {
     echo '<img src="../images/casques/', $ligne->libelle, '/', $ligne->image,
     '" alt="', $ligne->modele, '">';
     echo '<p class="prix">',$ligne->prix,'</p>';
+    echo '<p class="marque">',$ligne->nom,'</p>';
+    
+    $nomModele = str_replace("-"," ", ($ligne->image));
+    echo '<p class="modele">', substr($nomModele, 0, -4),'</p>';
+
+    echo '<img class="classement classement',$ligne->classement,'" src="../images/casques/etoiles.gif" alt="Classement ',($ligne->classement)/10,' sur 5">';
     echo '</article>';
 }
 echo '</section>';
