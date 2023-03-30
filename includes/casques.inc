@@ -12,6 +12,15 @@ while ($ligne = $res->fetch(PDO::FETCH_OBJ)) {
     echo '<article>';
     echo '<img src="../images/casques/', $ligne->libelle, '/', $ligne->image,
     '" alt="', $ligne->modele, '">';
+    
+    if($ligne->stock <= 0){
+        echo '<p class="stockko"><abbr data-tip="Sur commande uniquement">stock</abbr></p>';
+    }elseif ($ligne->stock < 10) {
+        echo '<p class="stockok"><abbr data-tip="Plus que ', $ligne->stock,' casques en stock...">stock</abbr></p>';
+    }else {
+        echo '<p class="stockok"><abbr data-tip=" ', $ligne->stock,' casques en stock">stock</abbr></p>';
+    }
+    
     echo '<p class="prix">',$ligne->prix,'</p>';
     echo '<p class="marque">',$ligne->nom,'</p>';
     
