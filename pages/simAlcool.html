@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- 
+     Page web créé dans le cadre du cours de web Dev
+     Auteur : Egor Gututui
+     Email : egor_gut@outlook.fr
+-->
+
+<html lang="fr-FR">
+    <head>
+        <title>Sensibilisation a l'alcool au volant</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Egor Gututui">
+        <meta name="description"
+              content="Découvrez des casques moto dépassant même les exigences des tests de sécurité. Tous les casques Nolark au meilleur prix et avec en prime la livraison gratuite !">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/styles.css" rel="stylesheet" type="text/css">
+        <link href="../css/autoAlcolo.css" rel="stylesheet" type="text/css">
+        
+        <link rel="icon" href="../favicon.ico">
+
+        <script src="../js/alcoolPublic.js"></script>
+    </head>
+    <header>
+        <picture>
+            <source media="(max-width:576px)" srcset="images/banniere_small.png">
+            <source srcset="../images/banniere.png">
+            <img src="../images/banniere.png" alt="Nolark : Protect your minds ! Cette bannière
+                 montre un coucher de soleil avec une femme embrassant un homme réalisant en
+                 stoppie sur sa moto.">
+            <!-- Image basée sur la création originale de ShiftGraphiX sur Pixabay :
+                https://pixabay.com/fr/couple-stoppie-sportive-vélomoteur-3156613/ -->
+        </picture>
+        <nav>
+            <input type="checkbox" style="width:30px; height: 30px">
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="pages/route.html">Route</a></li>
+                <li><a href="pages/cross.html">Cross</a></li>
+                <li><a href="pages/piste.html">Piste</a></li>
+                <li><a href="pages/enfants.html">Enfants</a></li>
+                <li><a href="pages/nous-contacter.html">Nous contacter</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Simulateur Debut -->    
+    <section id="formulaire">
+        <h1>Simulateur de sanctions en fonction du niveau d'alcoolemie</h1>
+        <form id="form_simulateur" name="form_simulateur">
+            <p>
+                <label for="num_poids">Le poid :</label>
+                <input type="number" id="num_poids" min="1" max="800" value="40">
+            </p>
+
+            <fieldset id="sexe">  
+                <legend>Sexe : </legend>
+                <p>
+                    <label for="rd_sexehomme">Homme</label>
+                    <input type="radio" name="rd_sexe" id="rd_sexehomme" value="homme" checked="checked">
+                </p>
+                <p>
+                    <label for="rd_sexefemme">Femme</label>
+                    <input type="radio" name="rd_sexe" id="rd_sexefemme" value="femme">
+                </p>
+            </fieldset>
+
+            <p>
+                <label for="nb_verres">Nombre de Verres : </label>
+                <input type="number" id="nb_verres" min="0" max="800" value="0">
+            <p>
+
+            <p id="controles">
+                <input type="reset" id="btn_annuler" value="Effacer les données">
+            </p>
+        </form>
+    </section>
+    <!-- Simulateur FIN --> 
+    <footer>
+        <p>&copy;2022 Nolark - Créé par <a href="mailto: egor_gut@outlook.fr">Egor Gututui</a>
+        <p>
+    </footer>
+</html>
+
