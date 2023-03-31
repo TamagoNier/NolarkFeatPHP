@@ -9,6 +9,7 @@ class ComposerStaticInitaa75de0ed33ea8bdfdede5a73732e0f8
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -18,6 +19,7 @@ class ComposerStaticInitaa75de0ed33ea8bdfdede5a73732e0f8
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
@@ -28,6 +30,10 @@ class ComposerStaticInitaa75de0ed33ea8bdfdede5a73732e0f8
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
+        'Symfony\\Polyfill\\Php72\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -35,6 +41,16 @@ class ComposerStaticInitaa75de0ed33ea8bdfdede5a73732e0f8
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
         ),
     );
 
@@ -47,6 +63,7 @@ class ComposerStaticInitaa75de0ed33ea8bdfdede5a73732e0f8
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitaa75de0ed33ea8bdfdede5a73732e0f8::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitaa75de0ed33ea8bdfdede5a73732e0f8::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitaa75de0ed33ea8bdfdede5a73732e0f8::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitaa75de0ed33ea8bdfdede5a73732e0f8::$classMap;
 
         }, null, ClassLoader::class);

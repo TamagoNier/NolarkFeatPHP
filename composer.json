@@ -8,6 +8,6 @@
         }
     ],
     "require": {
-        "twig/twig": "3.x-dev"
+        "twig/twig": "v2.15.4"
     }
 }
