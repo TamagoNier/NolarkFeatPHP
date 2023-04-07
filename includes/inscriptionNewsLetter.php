@@ -1,4 +1,6 @@
 <?php
+$unMail = $_POST['i_email'];
+
 function setInfoLettre($mail)
 {
     $cnx = new PDO('mysql:host=127.0.0.1;dbname=nolark', 'nolarkusr', 'nolarkpwd');
