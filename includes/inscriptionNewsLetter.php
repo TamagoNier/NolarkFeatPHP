@@ -1,5 +1,6 @@
 <?php
 $unMail = $_POST['i_email'];
+//if ($_POST['test'] == 'value1')
 
 function setInfoLettre($mail)
 {

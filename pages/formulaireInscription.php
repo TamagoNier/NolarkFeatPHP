@@ -6,8 +6,9 @@
          </div>
      </div>
      <div>
-         <input type="checkbox" name="chk_marques[]" id="chk_darts" value="darts">
+         <input type="checkbox" name="chk_concnent" id="chk_concent" value="concent">
          <label for="chk_darts">
          VOUS CONCENTEZ A L'UTILISATION DES DONNEES    
          </label>
      </div>
+ </form>
